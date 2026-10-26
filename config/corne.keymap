@@ -8,7 +8,7 @@
  *   - SYM is laid out for LaTeX/markdown first: \ $ = + on the left home row,
  *     ^ above \ and _ below it, every bracket pair on the right hand.
  *   - NUM is a left-hand numpad so the right hand can stay on the mouse in CAD.
- *   - FUN-layer keys pick the machine: Bluetooth profile + Windows/Mac modifier order.
+ *   - FUN-layer keys pick the machine (Bluetooth profile).
  *
  * Position numbers (used by home row mods)
  *    0  1  2  3  4  5     6  7  8  9 10 11
@@ -24,15 +24,12 @@
 #include <dt-bindings/zmk/pointing.h>
 
 #define BASE  0
-#define MAC   1
-#define GAME  2
-#define GNUM  3
-#define NAV   4
-#define SYM   5
-#define NUM   6
-#define MEDIA 7
-#define FUN   8
-#define MOUSE 9
+#define NAV   1
+#define SYM   2
+#define NUM   3
+#define MEDIA 4
+#define FUN   5
+#define MOUSE 6
 
 #define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29
 #define KEYS_R 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35
@@ -80,28 +77,6 @@
         };
     };
 
-    macros {
-        /* Machine selectors: switch Bluetooth profile AND modifier order together. */
-        to_pc: to_pc {
-            compatible = "zmk,behavior-macro";
-            display-name = "PC";
-            #binding-cells = <0>;
-            bindings = <&bt BT_SEL 0>, <&to BASE>;
-        };
-        to_mac: to_mac {
-            compatible = "zmk,behavior-macro";
-            display-name = "Mac";
-            #binding-cells = <0>;
-            bindings = <&bt BT_SEL 1>, <&to MAC>;
-        };
-        to_tp: to_tp {
-            compatible = "zmk,behavior-macro";
-            display-name = "ThinkPad";
-            #binding-cells = <0>;
-            bindings = <&bt BT_SEL 2>, <&to BASE>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -119,38 +94,6 @@
     &kp LSHFT  &hml LGUI A    &hml LALT S    &hml LCTRL D    &hml LSHFT F    &kp G     &kp H  &hmr RSHFT J    &hmr RCTRL K    &hmr LALT L    &hmr RGUI SEMI  &kp SQT
     &kp LCTRL  &kp Z          &kp X          &kp C           &kp V           &kp B     &kp N  &kp M           &kp COMMA       &kp DOT        &kp FSLH        &kp RSHFT
                     &lth MEDIA ESC  &lth MOUSE TAB  &lth NAV SPACE     &lth SYM RET  &lth NUM BSPC  &lth FUN DEL
-            >;
-        };
-
-        mac {
-            display-name = "Mac";
-            /* Swaps Ctrl and Cmd so Cmd+C feels exactly like Ctrl+C on Windows. */
-            bindings = <
-    &trans     &trans         &trans         &trans          &trans          &trans    &trans &trans          &trans          &trans         &trans          &trans
-    &trans     &hml LCTRL A   &trans         &hml LGUI D     &trans          &trans    &trans &trans          &hmr RGUI K     &trans         &hmr RCTRL SEMI &trans
-    &kp LGUI   &trans         &trans         &trans          &trans          &trans    &trans &trans          &trans          &trans         &trans          &trans
-                    &trans          &trans          &trans             &trans        &trans         &trans
-            >;
-        };
-
-        game {
-            display-name = "Game";
-            /* No home row mods, no layer-taps. Hold left middle thumb for numbers and F1-F5. */
-            bindings = <
-    &kp TAB    &kp Q   &kp W   &kp E   &kp R   &kp T        &kp Y  &kp U  &kp I     &kp O    &kp P     &kp BSPC
-    &kp LSHFT  &kp A   &kp S   &kp D   &kp F   &kp G        &kp H  &kp J  &kp K     &kp L    &kp SEMI  &kp SQT
-    &kp LCTRL  &kp Z   &kp X   &kp C   &kp V   &kp B        &kp N  &kp M  &kp COMMA &kp DOT  &kp FSLH  &kp RSHFT
-                    &kp ESC  &mo GNUM  &kp SPACE      &kp RET  &kp LALT  &to BASE
-            >;
-        };
-
-        game_num {
-            display-name = "GameNum";
-            bindings = <
-    &kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5       &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans
-    &trans     &kp F1  &kp F2  &kp F3  &kp F4  &kp F5       &kp F6  &kp F7  &kp F8  &kp F9  &kp F10 &trans
-    &trans     &kp N6  &kp N7  &kp N8  &kp N9  &kp N0       &trans  &trans  &trans  &trans  &trans  &trans
-                    &trans  &trans  &trans                  &trans  &trans  &trans
             >;
         };
 
@@ -209,10 +152,10 @@
         fun {
             display-name = "Fun";
 // Held by Del. F-keys sit where NUM puts the matching digit.
-// Right hand: machine select, Bluetooth, game mode, CAD number lock.
+// Right hand: machine select (BT profile), Bluetooth, CAD number lock.
             bindings = <
-    &bootloader &kp F12  &kp F7  &kp F8  &kp F9  &kp PSCRN     &to_pc     &to_mac    &to_tp  &bt BT_CLR  &out OUT_TOG   &bootloader
-    &none       &kp F11  &kp F4  &kp F5  &kp F6  &none         &to GAME   &tog NUM   &none   &none       &studio_unlock &sys_reset
+    &bootloader &kp F12  &kp F7  &kp F8  &kp F9  &kp PSCRN     &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_CLR  &out OUT_TOG   &bootloader
+    &none       &kp F11  &kp F4  &kp F5  &kp F6  &none         &none        &tog NUM     &none        &none       &studio_unlock &sys_reset
     &none       &kp F10  &kp F1  &kp F2  &kp F3  &none         &none      &none      &none   &none       &none          &none
                     &none  &none  &none                       &none  &none  &trans
             >;

@@ -26,8 +26,9 @@ Same-hand combos and mid-word rolls always type letters, by design.
 
 ## Machines (hold Del)
 
-Top row on the right: **PC**, **Mac**, **ThinkPad**. Each one picks the Bluetooth
-profile and the modifier order. In Mac mode Cmd sits where Ctrl does on Windows.
+Top row on the right: **PC**, **Mac**, **ThinkPad**. Each one switches to its own
+Bluetooth profile (0, 1, 2). Modifiers are the same on every machine, so on a Mac
+Cmd is the Gui key (`A` / `;`).
 
 ## Flashing
 
@@ -35,7 +36,7 @@ profile and the modifier order. In Mac mode Cmd sits where Ctrl does on Windows.
 2. Plug in the left half, double-tap its reset button, drag `corne_left-*.uf2` onto the drive.
 3. Same for the right half with `corne_right-*.uf2`.
 4. Open ZMK Studio and press **Restore stock settings** once so old Studio edits don't
-   override this keymap. Studio unlock is hold Del + `;`.
+   override this keymap. Studio locking is turned off in `build.yaml`, so no unlock is needed.
 
 `settings_reset` wipes Bluetooth pairings too. Only use it if a half won't pair.
 
