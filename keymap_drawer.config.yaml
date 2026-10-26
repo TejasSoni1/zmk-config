@@ -1,0 +1,98 @@
+parse_config:
+  trans_legend: {t: "▽", type: trans}
+  sticky_label: sticky
+  raw_binding_map:
+    "&msc SCRL_UP": "Scroll ↑"
+    "&msc SCRL_DOWN": "Scroll ↓"
+    "&msc SCRL_LEFT": "Scroll ←"
+    "&msc SCRL_RIGHT": "Scroll →"
+    "&mmv MOVE_UP": "Mouse ↑"
+    "&mmv MOVE_DOWN": "Mouse ↓"
+    "&mmv MOVE_LEFT": "Mouse ←"
+    "&mmv MOVE_RIGHT": "Mouse →"
+    "&mkp LCLK": "L click"
+    "&mkp RCLK": "R click"
+    "&mkp MCLK": "M click"
+    "&mkp MB4": "Back"
+    "&mkp MB5": "Fwd"
+    "&to_pc": "PC"
+    "&to_mac": "Mac"
+    "&to_tp": "ThinkPad"
+    "&studio_unlock": "Studio unlock"
+    "&tog NUM": "NUM lock"
+    "&to GAME": "Game mode"
+    "&to BASE": "Exit game"
+    "&kp LG(LS(S))": "Snip (Win)"
+    "&kp LG(LS(N4))": "Shot (Mac)"
+    "&bootloader": "Boot"
+    "&sys_reset": "Reset"
+    "&bt BT_CLR": "BT clear"
+    "&out OUT_TOG": "USB/BT"
+  zmk_keycode_map:
+    TAB: Tab
+    ESC: Esc
+    BSPC: Bksp
+    RET: Enter
+    SPACE: Space
+    DEL: Del
+    MINUS: "-"
+    SEMI: ";"
+    SQT: "'"
+    DQT: '"'
+    COMMA: ","
+    DOT: "."
+    FSLH: "/"
+    LSHFT: Shift
+    RSHFT: Shift
+    LCTRL: Ctrl
+    RCTRL: Ctrl
+    LGUI: Gui
+    RGUI: Gui
+    LALT: Alt
+    EXCL: "!"
+    AT: "@"
+    HASH: "#"
+    CARET: "^"
+    GRAVE: "`"
+    QMARK: "?"
+    LBRC: "{"
+    RBRC: "}"
+    PLUS: "+"
+    EQUAL: "="
+    DLLR: "$"
+    BSLH: "\\"
+    PRCNT: "%"
+    LPAR: "("
+    RPAR: ")"
+    COLON: ":"
+    TILDE: "~"
+    ASTRK: "*"
+    AMPS: "&"
+    UNDER: "_"
+    PIPE: "|"
+    LBKT: "["
+    RBKT: "]"
+    LT: "<"
+    GT: ">"
+    PG_DN: PgDn
+    PG_UP: PgUp
+    HOME: Home
+    END: End
+    LEFT: "←"
+    RIGHT: "→"
+    UP: "↑"
+    DOWN: "↓"
+    C_PREV: Prev
+    C_NEXT: Next
+    C_VOL_UP: Vol+
+    C_VOL_DN: Vol-
+    C_BRI_UP: Bri+
+    C_BRI_DN: Bri-
+    C_PP: Play
+    C_MUTE: Mute
+    PSCRN: PrtSc
+draw_config:
+  key_w: 62
+  key_h: 56
+  split_gap: 40
+  dark_mode: false
